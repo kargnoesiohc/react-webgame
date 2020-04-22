@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script corssorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+  <script corssorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+  <title>Document</title>
+  <style>
+    div:focus,
+    form:focus,
+    input:focus button:focus {
+      outline: none;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="root"></div> <!-- 루트 생성 -->
+  <script type="text/babel">
+    // 컴포넌트 생성
+  class GuGuDan extends React.Component {
+    constructor(props) {
+      super(props);
+        this.state = {
+          firstNum: Math.ceil(Math.random() * 9),
+          secondNum: Math.ceil(Math.random() * 9),
+          value: '',
+          result: '',
+        };
+      }
+      onSubmit = (e) => {
+        e.preventDefault();
+        if(parseInt(this.state.value) === this.state.firstNum * this.state.secondNum) {
+          this.setState({
+            result: `${this.state.firstNum} X ${this.state.secondNum} = ${this.state.value} 정답입니다.`,
+            firstNum: Math.ceil(Math.random() * 9),
+            secondNum: Math.ceil(Math.random() * 9),
+            value: '',
+          });
+        } else {
+          this.setState({
+            result: '틀렸습니다.',
+            value: '',
+          });
+        }; 
+      };
+      onChange = (e) => {
+        this.setState({value: e.target.value}) 
+      };
+
+      render() {
+        return (
+          <React.Fragment>
+            <div>{this.state.firstNum} 곱하기 {this.state.secondNum}은(는)?</div>
+            <form onSubmit={this.onSubmit}>
+              <input type="number" value={this.state.value} onChange={this.onChange} />
+              <button type="submit">입력</button>
+              <div>{this.state.result}</div>
+            </form>
+          </React.Fragment>
+        );
+      }
+  }
+</script>
+
+  <script type="text/babel">
+    //컴포넌트 실행
+ReactDOM.render(<GuGuDan/>, document.querySelector('#root'));
+</script>
+</body>
+
+</html>
