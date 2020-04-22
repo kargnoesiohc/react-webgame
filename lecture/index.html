@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script corssorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+  <script corssorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+  <title>Document</title>
+</head>
+<body>
+<div id="root"></div> <!-- 1.루트 생성 -->
+<script type="text/babel">
+
+  // 컴포넌트 생성
+  class LikeButton extends React.Component {
+    constructor(props) {
+      super(props);
+      this.state = {
+        liked: false,
+      };
+
+    }
+    render() {
+      //JSX ( JS + XML )
+      //button 생성
+      return <button type='submit' onClick={() => {this.setState({liked: true})}}>
+        {this.state.liked === true ? 'Liked' : 'Like'}
+      </button>;
+    }
+  }
+</script>
+<script type="text/babel">
+  //컴포넌트 렌더링
+  ReactDOM.render(<div>
+    <LikeButton />
+    <LikeButton />
+    <LikeButton />
+    <LikeButton />
+  </div>, document.querySelector('#root'));
+</script>
+</body>
+
+</html>
