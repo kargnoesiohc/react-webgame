@@ -24,10 +24,12 @@ class Baseball extends Component {
     const {value, answer, tries, } = this.state;
     e.preventDefault();
     if(value === answer.join('')) {
-      this.setState({
-        result: '홈런!',
-        tries: [...tries, { try: value, result: '홈런!'}],
-      })
+      this.setState((prevState) => {
+        return {
+          result: '홈런!',
+          tries: [...prevState.tries, { try: value, result: '홈런!'}],
+        }
+      });
          this.setState({
           value: '',
           answer: getNumbers(),
@@ -54,10 +56,12 @@ class Baseball extends Component {
             ball += 1;
           }
         }
-        this.setState({
+        this.setState((prevState) => {
+          return {
           value: '',
-          tries: [...tries, { try: value, result: `${strike}스트라이크 ${ball}볼`}],
-        })
+          tries: [...prevState.tries, { try: value, result: `${strike}스트라이크 ${ball}볼`}],
+          };
+        });
       }
     }
   };
