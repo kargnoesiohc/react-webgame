@@ -1,7 +1,6 @@
 import React, { memo } from 'react';
 
 const Try = memo(({ tryInfo }) => {
-  console.log('렌더ㅏ링');
   return (
     <li>
       <div>{tryInfo.try}</div>
