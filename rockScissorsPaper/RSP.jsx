@@ -54,8 +54,9 @@ const RSP = () => {
     if(diff === 0){
       setResult('비겼습니다!')
     } else if ([-1, 2].includes(diff)){
+      console.log('이김')
       setResult('이겼습니다!')
-      setScore((prevScore) => prevScore.score + 1);
+      setScore((prevScore) => prevScore + 1);
     } else {
       setResult('졌습니다!');
       setScore((prevScore) => prevScore - 1);

@@ -1,4 +1,3 @@
-const path = require('path');
 const webpack = require('webpack');
 
 module.exports = {
@@ -40,6 +39,5 @@ module.exports = {
 
   output: {
     filename: 'app.js',
-    path: path.join(__dirname, 'dist'),
   }, //출력
 };
