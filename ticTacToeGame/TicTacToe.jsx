@@ -1,4 +1,4 @@
-import React, { useReducer, useCallback, useEffect, memo } from 'react';
+import React, { useReducer, useEffect, memo } from 'react';
 import Table from './Table';
 import styled from 'styled-components';
 
